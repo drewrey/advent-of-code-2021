@@ -7,12 +7,14 @@ def read_data():
             data.append(int(val))
     return data
 
-def count_increases(data):
+def count_increases(data, window = 3):
     total = 0
-    for i, val in enumerate(data):
+
+    for i in range(len(data) - (window - 1)):
+        first_sum = sum(data[i:(i+window)])
+        second_sum = sum(data[(i+1):(i+window+1)])
         if i == 0:
-            continue
-        if val > data[i-1]:
+        if second_sum > first_sum:
             total += 1
     return total
 
