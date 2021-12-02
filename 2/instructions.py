@@ -8,16 +8,17 @@ def read_data():
     return data
 
 def parse_instructions(instructions):
-    horizontal, depth = (0, 0)
+    horizontal, depth, aim = (0, 0, 0)
     for instruction in instructions:
         command, distance = instruction.split(' ')
         distance = int(distance)
         if command == 'forward':
             horizontal += distance
+            depth += aim * distance
         if command == 'down':
-            depth += distance
+            aim += distance
         if command == 'up':
-            depth -= distance
+            aim -= distance
     return (horizontal, depth)
 
 def main():
