@@ -13,7 +13,6 @@ def count_increases(data, window = 3):
     for i in range(len(data) - (window - 1)):
         first_sum = sum(data[i:(i+window)])
         second_sum = sum(data[(i+1):(i+window+1)])
-        if i == 0:
         if second_sum > first_sum:
             total += 1
     return total
